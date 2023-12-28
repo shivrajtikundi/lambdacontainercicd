@@ -11,6 +11,8 @@ phases:
       - echo "Building Docker image"
       - docker build -t 415552224382.dkr.ecr.ap-south-1.amazonaws.com/flasklambda .
       - docker push 415552224382.dkr.ecr.ap-south-1.amazonaws.com/flasklambda
+      - sleep 10
+      - aws lambda update-function-code --function-name lambdaflask --image-uri 415552224382.dkr.ecr.ap-south-1.amazonaws.com/flasklambda:latest
 
 artifacts:
   files: '**/*'
